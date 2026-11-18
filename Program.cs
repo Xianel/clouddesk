@@ -23,6 +23,14 @@ static string? Validate(string? title, string? description, int priority)
     return null;
 }
 
+app.MapGet("/", () => Results.Ok(new
+{
+    service = "CloudDesk",
+    health = "/health",
+    tickets = "/api/tickets",
+    stats = "/api/stats"
+}));
+
 app.MapGet("/health", async () =>
 {
     try
